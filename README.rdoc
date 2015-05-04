@@ -18,3 +18,17 @@ https://www.udemy.com/pro-rubyonrails/#/
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
+
+* Testing Specs for recipes:
+	name: string 
+	summary: text
+	description: text
+
+	VALIDATION SPECS:
+	- Name must be Present 
+	- Name must be between 5 and 100 chars
+	- Summary must be present
+	- Summary must be between 10 and 150 chars
+	- Desciption must be present
+	- Description must be between 20 and 500 chars 
+	- chef_id must be present 
