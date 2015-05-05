@@ -24,7 +24,7 @@ https://www.udemy.com/pro-rubyonrails/#/
 	summary: text
 	description: text
 
-	VALIDATION SPECS:
+	VALIDATION SPECS RECIPE MODEL:
 	- Name must be Present 
 	- Name must be between 5 and 100 chars
 	- Summary must be present
@@ -32,3 +32,10 @@ https://www.udemy.com/pro-rubyonrails/#/
 	- Desciption must be present
 	- Description must be between 20 and 500 chars 
 	- chef_id must be present 
+
+	VALIDATION SPECS CHEF MODEL:
+	- Chefname must be present
+	-Chefname must be between 3 and 40 chars
+	- email must be present 
+	- email must be unique (as used for login)
+	- email must be valid
