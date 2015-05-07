@@ -57,6 +57,11 @@ h2 {
   color: #777;
 }
 
+h5 {
+  text-align: left;
+  font-weight: bold;
+}
+
 .left {
   text-align: left;
   letter-spacing: .5px;
@@ -66,4 +71,12 @@ h2 {
   margin-top: 25px;
   border-top: 1px solid #eaeaea;
   color: #777;
+}
+
+.chef_info {
+  margin-top: 30px;
+}
+
+.gravatar {
+  border-radius: 5px;
 }
