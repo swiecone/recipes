@@ -18,6 +18,15 @@
 				<strong>Steps:</strong>
 			</P>
 			<%= simple_format(@recipe.description) %>
+			<div class="pull-right">
+				<%= link_to like_recipe_path(@recipe), method: :post do %>
+					<i class="glyphicon glyphicon-thumbs-up"></i>
+				<% end %> &nbsp&nbsp&nbsp&nbsp
+				<%= link_to like_recipe_path(@recipe), method: :post  do %>
+					<i class="glyphicon glyphicon-thumbs-down"></i>
+				<% end %>
+
+			</div>
 </div>
 
 <h5><%= link_to "Return to Recipes listing", recipes_path, class: "btn btn-warning btn-small" %> </h5>

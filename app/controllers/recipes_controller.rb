@@ -39,6 +39,11 @@ def update
 	end  
 end 
 
+def like
+
+end
+
+
 
 private 
 
