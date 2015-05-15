@@ -40,7 +40,10 @@ def update
 end 
 
 def like
-
+	@recipe = Recipe.find(params[:id])
+	Like.create(like: params[:like], chef: Chef.first, recipe: @recipe)
+	flash[:success] = "Your selection was successful"
+	redirect_to :back
 end
 
 
