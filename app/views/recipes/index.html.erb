@@ -16,11 +16,25 @@
 			<p>
 				<span class='quiet'></span><small><%= time_ago_in_words(recipe.created_at) %> ago </small>
 			</P>
+
+			<div class="pull-right">
+				<%= link_to like_recipe_path(recipe, like: true), method: :post do %> &nbsp <%= recipe.thumbs_up_total %>
+					<i class="glyphicon glyphicon-thumbs-up"></i>
+				<% end %> &nbsp&nbsp&nbsp&nbsp
+				<%= link_to like_recipe_path(recipe, like: false), method: :post  do %> &nbsp <%= recipe.thumbs_down_total %>
+					<i class="glyphicon glyphicon-thumbs-down"></i>
+				<% end %>
+
+			</div>
 		</div>
+
+
+
 		<div class="col-md-4">
 			<%= image_tag(recipe.picture.url, size: "250x150", class: "gravatar") if recipe.picture? %>
 		</div>
 
+			
 	</div>
 	<hr/>
 <% end %>
