@@ -39,3 +39,13 @@ https://www.udemy.com/pro-rubyonrails/#/
 	- email must be present 
 	- email must be unique (as used for login)
 	- email must be valid
+
+What we need for authentication.
+- Add password to the chef table so chef can be authenticated and logged in
+- Use email as log in credential, since email is unique
+- Ability to register mew chefs to use the app
+- Ability to display chef profile
+- Ability to list chefs using the app
+- Ability to chefs to log in and log out of the app
+- Rescrict actions like create reicpe, edit recipe and link freature to logged in chefs only 
+- Registiring edit of recipes by chefs who created the recipes. 
