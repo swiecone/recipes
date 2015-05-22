@@ -17,7 +17,7 @@ end
 
 def create 
 	@recipe = Recipe.new(recipe_params)
-	@recipe.chef = Chef.find(session[:chef_id])
+	@recipe.chef = current_user
 
 	if @recipe.save
 		flash[:success] = "Your recipe was created successfuly!"
@@ -42,7 +42,7 @@ def update
 end 
 
 def like
-	like = Like.create(like: params[:like], chef: Chef.first, recipe: @recipe)
+	like = Like.create(like: params[:like], chef: current_user, recipe: @recipe)
 	if like.valid?
 		flash[:success] = "Your selection was successful"
 		redirect_to :back
