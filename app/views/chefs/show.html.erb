@@ -1,23 +1,27 @@
-<%= render 'shared/page_title', title: "All Recipes" %>
+<%= render 'shared/page_title', title: "Chef: "+ @chef.chefname %>
 
-<%= will_paginate %>
+<div class="row">
+	<div class="col-md-4 col-md-offset-4 center">
+		<%= gravatar_for @chef, size: 200 %>
+		<hr/>
+	</div>
+</div>
 
+<div class="row">
+	<div class="col-md-4 col-md-offset-4 center">
+		<h3><em>Recipes:</em></h3>
+		<%= will_paginate @recipes %>
+	</div>
+</div>
+	
 <% @recipes.each do |recipe| %>
-	<div class="row">
-
-		<div class="col-md-2">
-			<selection class="chef_info center">
-				<%= link_to gravatar_for(recipe.chef, size: 145), chef_path(recipe.chef) %>
-				<h5>Chef Name: <%= recipe.chef.chefname %></h5>
-			</selection>
-		</div>
-
-		<div class="col-lg-6 well">
+<div class="row">
+	<div class="col-lg-6 well col-lg-offset-3">
 			<h4><%= link_to recipe.name, recipe_path(recipe) %> </h4>
 			<p><%= recipe.summary %></p>
 			<p>
 				<span class='quiet'></span><small>Created: <%= time_ago_in_words(recipe.created_at) %> ago, </small>&nbsp
-						<span class='quiet'></span><small>Updated: <%= time_ago_in_words(recipe.updated_at) %> ago </small>
+				<span class='quiet'></span><small>Updated: <%= time_ago_in_words(recipe.updated_at) %> ago </small>
 			</P>
 
 			<div class="pull-right">
@@ -27,21 +31,7 @@
 				<%= link_to like_recipe_path(recipe, like: false), method: :post  do %> &nbsp <%= recipe.thumbs_down_total %>
 					<i class="glyphicon glyphicon-thumbs-down"></i>
 				<% end %>
-
 			</div>
 		</div>
-
-
-
-		<div class="col-md-4">
-			<%= image_tag(recipe.picture.url, size: "250x150", class: "gravatar") if recipe.picture? %>
-		</div>
-
-			
 	</div>
-	<hr/>
 <% end %>
-
-<%= will_paginate %>
-
-<% will_paginate %>
