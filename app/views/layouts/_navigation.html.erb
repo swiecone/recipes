@@ -1,15 +1,41 @@
 <header class="navbar navbar-fixed-top navbar-default">
 		<div class="container">
 			<%= link_to "My Recipes", home_path, class: "btn btn-lg btn-success", id: "logo" %>
-			<div class="nav-item"> 
-				<%= link_to "link 1", "" ,class: "btn btn-default btn-primary" %>
+			<div class="nav-item">
+						<li class="dropdown">
+							<%= link_to '#', class: "btn btn-default btn-info dropdown-toggle", "data-toggle" => "dropdown" do %>
+							  <span class="glyphicon glyphicon-fire" aria-hidden="true"></span> 
+							   Styles 
+							  <b class="caret"></b>
+								<% end %>
+						<ul class='dropdown-menu'>
+							<% Style.all.each do |style| %>
+								<li><%= link_to style.name, style_path(style) %></li>
+								<% end %>
+						</ul>	
+					</li>
 			</div>
+
 			<div class="nav-item"> 
-				<%= link_to "link 1",  "" ,class: "btn btn-default btn-primary" %>
+		
+						<li class="dropdown">
+							<%= link_to '#', class: "btn btn-default btn-info dropdown-toggle", "data-toggle" => "dropdown" do %>
+							  <span class="glyphicon glyphicon-leaf" aria-hidden="true"></span> 
+							   Ingredients 
+							  <b class="caret"></b>
+							<% end %>
+						<ul class='dropdown-menu'>
+							<% Ingredient.all.each do |ingredient| %>
+								<li><%= link_to ingredient.name, ingredient_path(ingredient) %></li>
+								<% end %>
+						</ul>	
+					</li>
+			
 			</div>
 			<% if logged_in? %>
 				<div class="nav-item"> 
-					<%= link_to "New Recipe", new_recipe_path , class: "btn btn-default btn-warning" %>
+					<%= link_to " New Recipe", new_recipe_path , class: "btn btn-default btn-warning glyphicon glyphicon-ok"  %> 
+							  
 				</div>
 
 				<div class="nav-item navbar-right">
@@ -32,6 +58,7 @@
 			<% else %>
 				<div class="nav-item navbar-center"> 
 						<%= link_to "Log In", login_path, class: "btn btn-default btn small" %> 
+
 				</div>
 			<% end %>
 		</div>
