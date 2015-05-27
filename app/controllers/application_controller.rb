@@ -16,7 +16,7 @@ helper_method :current_user, :logged_in?
   def require_user
   	if !logged_in?
   		flash[:danger] = "You must be logged in to perform this action"
-  		redirect_to :back
+  		redirect_to recipes_path
   	end 
   end 
 

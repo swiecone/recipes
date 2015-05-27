@@ -1,8 +1,9 @@
 <header class="navbar navbar-fixed-top navbar-default">
 		<div class="container">
 			<%= link_to "My Recipes", home_path, class: "btn btn-lg btn-success", id: "logo" %>
-			<div class="nav-item">
-						<li class="dropdown">
+			<ul class="nav-ul-item">
+
+					<li class="dropdown" >
 							<%= link_to '#', class: "btn btn-default btn-info dropdown-toggle", "data-toggle" => "dropdown" do %>
 							  <span class="glyphicon glyphicon-fire" aria-hidden="true"></span> 
 							   Styles 
@@ -12,12 +13,23 @@
 							<% Style.all.each do |style| %>
 								<li><%= link_to style.name, style_path(style) %></li>
 								<% end %>
+
+								<% if logged_in? %>
+									<li class='divider'></li>
+									<li>
+										<%= link_to(new_style_path) do %>
+										<span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span> 
+										New Style
+										<% end %>
+									</li>
+							<% end %>
+							
 						</ul>	
 					</li>
-			</div>
+				
+			</ul>
 
-			<div class="nav-item"> 
-		
+			<ul class="nav-ul-item"> 
 						<li class="dropdown">
 							<%= link_to '#', class: "btn btn-default btn-info dropdown-toggle", "data-toggle" => "dropdown" do %>
 							  <span class="glyphicon glyphicon-leaf" aria-hidden="true"></span> 
@@ -28,15 +40,27 @@
 							<% Ingredient.all.each do |ingredient| %>
 								<li><%= link_to ingredient.name, ingredient_path(ingredient) %></li>
 								<% end %>
+
+								<% if logged_in? %>
+									<li class='divider'></li>
+									<li>
+										<%= link_to(new_ingredient_path) do %>
+										<span class="glyphicon glyphicon-grain" aria-hidden="true"></span> 
+										New Ingredient
+										<% end %>
+									</li>
+							<% end %>
+
 						</ul>	
 					</li>
-			
-			</div>
+			</ul>
 			<% if logged_in? %>
-				<div class="nav-item"> 
-					<%= link_to " New Recipe", new_recipe_path , class: "btn btn-default btn-warning glyphicon glyphicon-ok"  %> 
+				<ul class="nav-ul-item"> 
+						<li class="dropdown">
+					<%= link_to " New Recipe", new_recipe_path , class: "btn btn-default btn-warning glyphicon glyphicon-plus"  %> 
+						</li>
 							  
-				</div>
+				</ul>
 
 				<div class="nav-item navbar-right">
 					<ul>
