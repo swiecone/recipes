@@ -67,7 +67,10 @@ private
 	end 
 
 	def require_same_user
-		if current_user != @recipe.chef
+		if current_user.admin? 
+			flash[:success] = " #{current_user.chefname}, you can  edit the recipe as you are admin."
+			#redirect_to edit_recipe_path
+		elsif current_user != @recipe.chef
 			flash[:danger] = " #{current_user.chefname}, you can only edit your own recipes!"
 			redirect_to recipes_path
 		else
