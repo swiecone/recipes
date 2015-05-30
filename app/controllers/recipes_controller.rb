@@ -56,8 +56,8 @@ def like
 end
 
 def destroy 
-	Recipe.find(params[:id]).destroy
-	flash[:success] = "Recipe deleted"
+	@destroyed_recipe = Recipe.find(params[:id]).destroy
+	flash[:success] = "\'#{@destroyed_recipe.name}\'<strong> recipe was deleted."
 	redirect_to recipes_path
 end 
 
