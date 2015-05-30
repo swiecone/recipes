@@ -3,6 +3,7 @@ class RecipesController < ApplicationController
 	before_action :require_user, except: [:show, :index, :like]
 	before_action :require_user_like, only: [:like]
 	before_action  :require_same_user, only: [:update, :edit]
+	before_action :admin_user, only: :destroy 
 
 	def index 
 		@recipes = Recipe.paginate(:page => params[:page], :per_page => 4)
@@ -54,6 +55,11 @@ def like
 
 end
 
+def destroy 
+	Recipe.find(params[:id]).destroy
+	flash[:success] = "Recipe deleted"
+	redirect_to recipes_path
+end 
 
 
 private 
@@ -83,6 +89,10 @@ private
   			flash[:danger] = "Please log in order to like/dislike a recipe!"
   			redirect_to :back
   		end 
+  	end 
+
+  	def admin_user
+  		redirect_to recipes_path unless current_user.admin?
   	end 
 
 end 
